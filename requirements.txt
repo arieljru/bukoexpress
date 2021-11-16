@@ -1,4 +1,4 @@
--bprophet @ file:///D:/bld/fbprophet_1599365958928/work
+fbprophet @ file:///D:/bld/fbprophet_1599365958928/work
 alabaster @ file:///home/ktietz/src/ci/alabaster_1611921544520/work
 altair==4.1.0
 anaconda-client==1.7.2
