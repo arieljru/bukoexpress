@@ -10,7 +10,7 @@ import pandas as pd
 import numpy as np
 
 #Page expands to full width
-st.set_page_config(layout="wide")
+#st.set_page_config(layout="wide")
 
 st.title("Predictive Analytics")
 
