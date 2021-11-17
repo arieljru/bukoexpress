@@ -7,4 +7,4 @@ mysql-connector-python-rf==2.2.2
 lxml==4.5.1
 plotly==5.4.0
 pystan==2.19.1.1
-prophet==0.7.1
+fbprophet==0.7.1
