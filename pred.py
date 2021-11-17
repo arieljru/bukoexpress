@@ -9,8 +9,16 @@ from plotly import graph_objs as go
 import pandas as pd
 import numpy as np
 
+#Page expands to full width
+st.set_page_config(layout="wide")
 
 st.title("Predictive Analytics")
+
+#About
+expander_bar = st.expander("About")
+expander_bar.markdown("""
+**Context:** Time-series forecasting using *Prophet* model to ...
+""")
 
 product = ("All Product","Big Buko Pie / Box","Mini Buko Pie Box","Mini Buko Pie Piece","Macaroons","Macapuno Balls","Coffee",
            "Buko Juice 1L Bottle","Buko Shake 1L Bottle","Macapuno Shake 1L Bottle","Buko Juice 12oz Cup","Buko Juice 16oz Cup",
@@ -53,19 +61,58 @@ forecast = m.predict(future)
 st.title("%s Day/s " % n_days + "Time-Series Forecast for : \n ")
 st.title("%s " % selected_product)
 
+
 #TABLE
 zxc = forecast.tail(n_days)
 zxc= zxc[['ds','yhat']]
-zxc= zxc.rename(columns = {'ds': 'Date', 'yhat': 'Predicted Values'})
+zxc= zxc.rename(columns = {'ds': 'Date', 'yhat': 'Predicted'})
 import datetime
 zxc['Day'] = zxc['Date'].dt.strftime("%B %d, %Y at %A")
-zxc['Date'] = zxc['Date'].apply(lambda x: str(x)[0:10])
+#zxc['Date'] = zxc['Date'].apply(lambda x: str(x)[0:10])
 
-qwe = zxc[['Day', 'Predicted Values']]
+qwe = zxc[['Day', 'Predicted']]
 st.write(qwe)
 
+#ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+import matplotlib.pyplot as plt
+from matplotlib.dates import DateFormatter, DayLocator
+
+fig, ax = plt.subplots(figsize=(30, 5))
+
+#Actual
+ax.plot(sales_new.ds, sales_new.y,marker='o', markerfacecolor='green',
+ markersize=5, color='lightgreen', linewidth=4, label='Actual')
+ax.legend(loc='upper left')
+ax.xaxis.set_major_formatter(DateFormatter('%B'))
+
+#Titi
+asd = forecast.tail(n_days)
+asd = asd[['ds','yhat']]
+asd = asd.rename(columns = {'ds': 'Date', 'yhat': 'Predicted'})
+#Predicted
+ax.plot(asd.Date, asd.Predicted,marker='o', markerfacecolor='blue',
+ markersize=5, color='skyblue', linewidth=4, label='Predicted')
+ax.legend(loc='upper left')
+ax.xaxis.set_major_formatter(DateFormatter('%B'))
+
+for tick in ax.xaxis.get_major_ticks():
+  tick.label.set_fontsize(14)
+
+# Add x, y gridlines
+ax.grid(b=True, color='grey',
+        linestyle='-.', linewidth=0.5,
+        alpha=0.2)
+
+plt.title("Time-series Forecast", fontsize=20)
+
+
+fig
+#oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+
+
 st.title("\n Time-Series Model Assessment")
-plot1 = plot_plotly(m, forecast)
+b = forecast.replace(forecast[['yhat_lower','yhat_upper','yhat']].head(153).values,np.NaN)
+plot1 = plot_plotly(m, b)
 plot1
 
 
