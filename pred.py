@@ -10,17 +10,12 @@ import pandas as pd
 import numpy as np
 
 #Page expands to full width
-st.markdown('''
-    <a href="http://testingbig.rf.gd/big1/main/salesreport.php?d1=0&d2=0">
-        Back
-    </a>''',
-    unsafe_allow_html=True
-)
-st.beta_set_page_config(layout="wide")
+st.set_page_config(layout="wide")
+
 st.title("Predictive Analytics")
 
 #About
-expander_bar = st.beta_expander("About")
+expander_bar = st.expander("About")
 expander_bar.markdown("""
 **Context:** Time-series forecasting using *Prophet* model to ...
 """)
@@ -111,26 +106,17 @@ ax.grid(b=True, color='grey',
 plt.title("Time-series Forecast", fontsize=20)
 
 
-st.plotly_chart(fig, use_container_width=True)
+fig
 #oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
-st.subheader("Explore Time Series Forcast")
-labe_title = st.markdown("<p style='font-size:22px'><b>Time Series Analysis with Uncertainty Area</b></p>", unsafe_allow_html=True)
-with st.beta_expander(label="Time Series Analysis with Uncertainty Area"):
-  st.markdown("<p style='font-size:22px'><b>The chart below shows the actual value together with the predicted value and the area of uncertainty.</b></p>", unsafe_allow_html=True)
-  st.markdown("<p style='font-size:22px'><b>Uncertainty area or Confidence band in this are most of the data falls. As a Decision maker points out of the Uncertainty are worth understanding, sure there is something special about it.</b></p>", unsafe_allow_html=True)
-  st.markdown("<p style='font-size:22px'><b>THIS WILL BE FOR GOOD OR FOR WORSE.</b></p>", unsafe_allow_html=True)
+
+st.title("\n Time-Series Model Assessment")
+b = forecast.replace(forecast[['yhat_lower','yhat_upper','yhat']].head(-n_days).values,np.NaN)
+plot1 = plot_plotly(m, b)
+plot1
 
 
-  plot1 = plot_plotly(m, forecast)
-  st.plotly_chart(plot1, use_container_width=True)
-#st.title("\n Time-Series Model Assessment")
-#b = forecast.replace(forecast[['yhat_lower','yhat_upper','yhat']].head(-n_days).values,np.NaN)
-#plot1 = plot_plotly(m, b)
-#plot1
-
-
-#st.title("Time-Series Components")
-#plot2  = plot_components_plotly(m, forecast)
-#plot2
+st.title("Time-Series Components")
+plot2  = plot_components_plotly(m, forecast)
+plot2
 
