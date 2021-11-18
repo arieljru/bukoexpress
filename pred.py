@@ -16,12 +16,9 @@ import numpy as np
 st.beta_set_page_config(layout="wide")
 
 
-st.markdown('''
-    <a href="http://testingbig.rf.gd/big1/main/salesreport.php">
-        Back
-    </a>''',
-    unsafe_allow_html=True
-)
+if st.button('Back'):
+    window.history.back()
+    
 
 st.title("Predictive Analytics")
 
