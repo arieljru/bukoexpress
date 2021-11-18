@@ -15,7 +15,7 @@ st.beta_set_page_config(layout="wide")
 st.title("Predictive Analytics")
 
 #About
-expander_bar = st.expander("About")
+expander_bar = st.beta_expander("About")
 expander_bar.markdown("""
 **Context:** Time-series forecasting using *Prophet* model to ...
 """)
