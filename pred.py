@@ -8,7 +8,7 @@ from  fbprophet.diagnostics import performance_metrics
 from plotly import graph_objs as go
 import pandas as pd
 import numpy as np
-
+import webbrowser
 
 
 
@@ -17,7 +17,7 @@ st.beta_set_page_config(layout="wide")
 
 
 if st.button('Back'):
-    window.history.back()
+    webbrowser.history.back()
     
 
 st.title("Predictive Analytics")
