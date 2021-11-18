@@ -121,7 +121,7 @@ st.plotly_chart(fig, use_container_width=True)
 #oooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 st.subheader("Explore Time Series Forcast")
 labe_title = st.markdown("<p style='font-size:22px'><b>Time Series Analysis with Uncertainty Area</b></p>", unsafe_allow_html=True)
-with st.expander(label="Time Series Analysis with Uncertainty Area"):
+with st.beta_expander(label="Time Series Analysis with Uncertainty Area"):
   st.markdown("<p style='font-size:22px'><b>The chart below shows the actual value together with the predicted value and the area of uncertainty.</b></p>", unsafe_allow_html=True)
   st.markdown("<p style='font-size:22px'><b>Uncertainty area or Confidence band in this are most of the data falls. As a Decision maker points out of the Uncertainty are worth understanding, sure there is something special about it.</b></p>", unsafe_allow_html=True)
   st.markdown("<p style='font-size:22px'><b>THIS WILL BE FOR GOOD OR FOR WORSE.</b></p>", unsafe_allow_html=True)
