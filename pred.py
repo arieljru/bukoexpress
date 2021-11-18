@@ -9,6 +9,14 @@ from plotly import graph_objs as go
 import pandas as pd
 import numpy as np
 
+
+st.markdown('''
+    <a href="http://testingbig.rf.gd/big1/main/salesreport.php?d1=0&d2=0">
+        Back
+    </a>''',
+    unsafe_allow_html=True
+)
+
 #Page expands to full width
 st.beta_set_page_config(layout="wide")
 
