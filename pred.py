@@ -16,6 +16,7 @@ st.markdown('''
     </a>''',
     unsafe_allow_html=True
 )
+st.beta_set_page_config(layout="wide")
 st.title("Predictive Analytics")
 
 #About
