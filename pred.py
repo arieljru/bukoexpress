@@ -17,7 +17,7 @@ st.beta_set_page_config(layout="wide")
 
 
 if st.button('Back'):
-    webbrowser.history.back()
+    webbrowser.open('http://testingbig.rf.gd/big1/main/salesreport.php')
     
 
 st.title("Predictive Analytics")
