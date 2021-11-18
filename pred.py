@@ -18,8 +18,8 @@ st.beta_set_page_config(layout="wide")
 from bokeh.models.widgets import Div
 
 if st.button('Back'):
-    js = "window.open('http://testingbig.rf.gd/big1/main/salesreport.php?d1=0&d2=0')"  # New tab or window
-    #js = "window.location.href = 'http://testingbig.rf.gd/big1/main/salesreport.php?d1=0&d2=0'"  # Current tab
+    #js = "window.open('http://testingbig.rf.gd/big1/main/salesreport.php?d1=0&d2=0')"  # New tab or window
+    js = "window.location.href = ('http://testingbig.rf.gd/big1/main/salesreport.php?d1=0&d2=0')"  # Current tab
     html = '<img src onerror="{}">'.format(js)
     div = Div(text=html)
     st.bokeh_chart(div)
