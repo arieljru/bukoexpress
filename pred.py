@@ -47,7 +47,7 @@ product = ("All Product","Big Buko Pie / Box","Mini Buko Pie Box","Mini Buko Pie
 selected_product = st.selectbox("Select product for prediction:",product)
 
 
-n_days = st.slider('Days of prediction:', 1, 7)
+n_days = st.slider('Days of prediction:', 1, 31)
 
 connection = mysql.connector.connect(host = 'sql6.freesqldatabase.com',user = 'sql6451777', passwd = 'RyxluaSUqz', db = 'sql6451777')
 
