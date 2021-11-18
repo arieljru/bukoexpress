@@ -12,7 +12,7 @@ import numpy as np
 #Page expands to full width
 st.beta_set_page_config(layout="wide")
 st.markdown('''
-    <a href="http://testingbig.rf.gd/big1/main/salesreport.php?d1=0&d2=0">
+    <a href="http://google.com">
         Back
     </a>''',
     unsafe_allow_html=True
