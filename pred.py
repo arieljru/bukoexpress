@@ -10,13 +10,12 @@ import pandas as pd
 import numpy as np
 
 #Page expands to full width
-st.beta_set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 
 st.title("Predictive Analytics")
 
 #About
-
-expander_bar = st.beta_expander("About")
+expander_bar = st.expander("About")
 expander_bar.markdown("""
 **Context:** Time-series forecasting using *Prophet* model to ...
 """)
@@ -78,7 +77,7 @@ st.write(qwe)
 import matplotlib.pyplot as plt
 from matplotlib.dates import DateFormatter, DayLocator
 
-fig, ax = plt.subplots(figsize=(30, 5))
+fig, ax = plt.subplots(figsize=(25, 5))
 
 #Actual
 ax.plot(sales_new.ds, sales_new.y,marker='o', markerfacecolor='green',
@@ -86,7 +85,7 @@ ax.plot(sales_new.ds, sales_new.y,marker='o', markerfacecolor='green',
 ax.legend(loc='upper left')
 ax.xaxis.set_major_formatter(DateFormatter('%B'))
 
-#Titi
+#For pred_val
 asd = forecast.tail(n_days)
 asd = asd[['ds','yhat']]
 asd = asd.rename(columns = {'ds': 'Date', 'yhat': 'Predicted'})
@@ -112,7 +111,7 @@ fig
 
 
 st.title("\n Time-Series Model Assessment")
-b = forecast.replace(forecast[['yhat_lower','yhat_upper','yhat']].head(153).values,np.NaN)
+b = forecast.replace(forecast[['yhat_lower','yhat_upper','yhat']].head(-n_days).values,np.NaN)
 plot1 = plot_plotly(m, b)
 plot1
 
