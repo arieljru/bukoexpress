@@ -7,4 +7,3 @@ plotly==5.4.0
 pystan==2.19.1.1
 fbprophet==0.7.1
 bokeh==2.4.1
-sessionstate==0.63.1
