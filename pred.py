@@ -116,7 +116,7 @@ ax.grid(b=True, color='grey',
         linestyle='-.', linewidth=0.5,
         alpha=0.2)
 
-plt.title("Time-series Forecast", fontsize=20)
+st.markdown("<h1 style='text-align: center; color: black;'>Time-series Forecast</h1>", unsafe_allow_html=True)
 
 
 st.plotly_chart(fig, use_container_width=True)
