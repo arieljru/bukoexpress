@@ -23,10 +23,6 @@ if st.button('Back'):
     html = '<img src onerror="{}">'.format(js)
     div = Div(text=html)
     st.bokeh_chart(div)
-    js1 = "window.close()"  # Current tab
-    html = '<img src onerror="{}">'.format(js1)
-    div1 = Div(text=html)
-    st.bokeh_chart(div1)
 
 #ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
 
