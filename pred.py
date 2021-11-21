@@ -35,7 +35,7 @@ expander_bar = st.beta_expander("About")
 expander_bar.markdown("""
 **Context:** Time-series forecasting using *Prophet* model to ...
 """)
-criteria=("Quantity","Sales")
+
 
 product = ("Overall","Sales","Big Buko Pie / Box","Mini Buko Pie Box","Mini Buko Pie Piece","Macaroons","Macapuno Balls",
            "Buko Juice 1L Bottle","Buko Shake 1L Bottle","Macapuno Shake 1L Bottle","Buko Juice 12oz Cup","Buko Juice 16oz Cup",
@@ -45,7 +45,7 @@ product = ("Overall","Sales","Big Buko Pie / Box","Mini Buko Pie Box","Mini Buko
 
 
 
-selected_criteria = st.selectbox("Select product for prediction:",criteria)
+
 selected_product = st.selectbox("Select product for prediction:",product)
 
 
