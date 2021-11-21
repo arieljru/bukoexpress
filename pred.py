@@ -36,7 +36,7 @@ expander_bar.markdown("""
 **Context:** Time-series forecasting using *Prophet* model to ...
 """)
 
-product = ("All Product","Big Buko Pie / Box","Mini Buko Pie Box","Mini Buko Pie Piece","Macaroons","Macapuno Balls",
+product = ("Overall Quantity","Sales","Big Buko Pie / Box","Mini Buko Pie Box","Mini Buko Pie Piece","Macaroons","Macapuno Balls",
            "Buko Juice 1L Bottle","Buko Shake 1L Bottle","Macapuno Shake 1L Bottle","Buko Juice 12oz Cup","Buko Juice 16oz Cup",
            "Buko Shake 16oz Cup","Buko Shake 22oz Cup",
            "Buko Juice 350ml Bottle","Buko Shake 350ml Bottle",
@@ -53,19 +53,44 @@ n_days = st.slider('Days of prediction:', 1, 31)
 connection = mysql.connector.connect(host = 'sql6.freesqldatabase.com',user = 'sql6451777', passwd = 'RyxluaSUqz', db = 'sql6451777')
 
 
-if selected_product == "All Product":
+#if selected_product == "All Product":
+#  sales = pd.read_sql_query("SELECT * FROM sales_order WHERE date >= '2021-03-01 00:00:00'",  connection)
+#else:
+#  sales = pd.read_sql_query("SELECT * FROM sales_order WHERE date >= '2021-03-01 00:00:00' and name = '%s' " % selected_product, connection)
+
+
+
+#sales_new = sales[['qty','date']]
+#sales_new['date'] = pd.to_datetime(sales_new['date']).dt.date
+#sales_new = sales_new.rename(columns = {'qty': 'y', 'date': 'ds'}, inplace = False)
+#sales_new = sales_new.groupby('ds')['y'].sum()
+#sales_new = pd.DataFrame(sales_new)
+#sales_new.reset_index(level=0, inplace=True)
+
+if selected_product == "Overall Quantity":
   sales = pd.read_sql_query("SELECT * FROM sales_order WHERE date >= '2021-03-01 00:00:00'",  connection)
+  sales_new = sales[['qty','date']]
+  sales_new['date'] = pd.to_datetime(sales_new['date']).dt.date
+  sales_new = sales_new.rename(columns = {'qty': 'y', 'date': 'ds'}, inplace = False)
+  sales_new = sales_new.groupby('ds')['y'].sum()
+  sales_new = pd.DataFrame(sales_new)
+  sales_new.reset_index(level=0, inplace=True)
+elif selected_product == "Sales":
+    sales = pd.read_sql_query("SELECT * FROM sales_order WHERE date >= '2021-03-01 00:00:00'",  connection)
+    sales_new = sales[['amount','date']]
+    sales_new['date'] = pd.to_datetime(sales_new['date']).dt.date
+    sales_new = sales_new.rename(columns = {'amount': 'y', 'date': 'ds'}, inplace = False)
+    sales_new = sales_new.groupby('ds')['y'].sum()
+    sales_new = pd.DataFrame(sales_new)
+    sales_new.reset_index(level=0, inplace=True)
 else:
-  sales = pd.read_sql_query("SELECT * FROM sales_order WHERE date >= '2021-03-01 00:00:00' and name = '%s' " % selected_product, connection)
-
-
-
-sales_new = sales[['qty','date']]
-sales_new['date'] = pd.to_datetime(sales_new['date']).dt.date
-sales_new = sales_new.rename(columns = {'qty': 'y', 'date': 'ds'}, inplace = False)
-sales_new = sales_new.groupby('ds')['y'].sum()
-sales_new = pd.DataFrame(sales_new)
-sales_new.reset_index(level=0, inplace=True)
+    sales = pd.read_sql_query("SELECT * FROM sales_order WHERE date >= '2021-03-01 00:00:00' and name = '%s' " % selected_product, connection)
+    sales_new = sales[['qty','date']]
+    sales_new['date'] = pd.to_datetime(sales_new['date']).dt.date
+    sales_new = sales_new.rename(columns = {'qty': 'y', 'date': 'ds'}, inplace = False)
+    sales_new = sales_new.groupby('ds')['y'].sum()
+    sales_new = pd.DataFrame(sales_new)
+    sales_new.reset_index(level=0, inplace=True)
 
 
 m = Prophet(interval_width=0.88).add_seasonality(name='monthly', period= 30.5,fourier_order=14)
