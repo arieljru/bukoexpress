@@ -37,7 +37,7 @@ expander_bar.markdown("""
 """)
 
 
-product = ("Overall","Sales","Big Buko Pie / Box","Mini Buko Pie Box","Mini Buko Pie Piece","Macaroons","Macapuno Balls",
+product = ("Overall Quantity","Sales","Big Buko Pie / Box","Mini Buko Pie Box","Mini Buko Pie Piece","Macaroons","Macapuno Balls",
            "Buko Juice 1L Bottle","Buko Shake 1L Bottle","Macapuno Shake 1L Bottle","Buko Juice 12oz Cup","Buko Juice 16oz Cup",
            "Buko Shake 16oz Cup","Buko Shake 22oz Cup",
            "Buko Juice 350ml Bottle","Buko Shake 350ml Bottle",
