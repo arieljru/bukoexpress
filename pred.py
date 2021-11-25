@@ -47,7 +47,7 @@ product = ("Overall Quantity","Sales","Big Buko Pie / Box","Mini Buko Pie Box","
 
 
 
-selected_product = st.selectbox("Select product for prediction:",product)
+selected_product = st.selectbox("Select category for prediction:",product)
 
 
 n_days = st.slider('Days of prediction:', 1, 31)
