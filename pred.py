@@ -33,7 +33,8 @@ st.title("Predictive Analytics")
 #About
 expander_bar = st.beta_expander("About")
 expander_bar.markdown("""
-**Context:** Time-series forecasting using *Prophet* model to ...
+**Context:** The Prophet is a time-series machine learning forecasting model created by Facebook’s Data Science team that is capable of forecasting the value of quantity that will be sold of listed products in the drop down as well as the overall quantity and the total sale of the Buko Express franchise with minimal error. The Prophet time series forecasting model used a decomposable model that has three main components, the seasonality,
+trend and holidays in the historical data.
 """)
 
 
