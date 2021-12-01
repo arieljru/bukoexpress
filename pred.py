@@ -52,7 +52,7 @@ selected_product = st.selectbox("Select category for prediction:",product)
 
 n_days = st.slider('Days of prediction:', 1, 31)
 
-connection = mysql.connector.connect(host = 'sql6.freesqldatabase.com',user = 'sql6453665', passwd = 'dHPexBe1UN', db = 'sql6453665')
+connection = mysql.connector.connect(host = 'sql6.freesqldatabase.com',user = 'sql6455619', passwd = 'qTzlTGbqKS', db = 'sql6455619')
 
 
 #if selected_product == "All Product":
